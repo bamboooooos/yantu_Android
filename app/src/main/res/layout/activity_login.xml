@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="   欢迎来到研途"
+        android:textSize="35sp"/>
+
+    <Button
+        android:text="快速登录"
+        android:id="@+id/phoneLogin"
+        android:textColor="	#20B2AA"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"/>
+
+    <EditText
+        android:id="@+id/loginUser"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginText"
+        android:layout_marginTop="70dp"
+        android:hint="手机/邮箱/用户名" />
+
+    <EditText
+        android:id="@+id/loginPassword"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginUser"
+        android:hint="密码" />
+
+    <ImageButton
+        android:id="@+id/getyzm"
+        android:visibility="gone"
+        android:src="@drawable/getyzm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginUser"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="280dp"
+        android:background="@android:color/transparent"
+        />
+    <RelativeLayout
+        android:id="@+id/rmbandfgt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginPassword">
+    <CheckBox
+        android:id="@+id/remember"
+        android:text="7天内免登录"
+        android:layout_marginLeft="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:visibility="visible"
+        android:id="@+id/forget"
+        android:text="忘记密码？"
+        android:textSize="12sp"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="32sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        />
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:background="@android:color/transparent"
+        android:src="@drawable/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:layout_below="@id/rmbandfgt"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tipText"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*未注册研途的手机号,登录时将自动注册"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/xieyiText"
+            android:text="登录代表您已经同意"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/xieyi"
+            android:background="@android:color/transparent"
+            android:textColor="#20B2AA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《研途用户协议》"
+            android:layout_toRightOf="@+id/xieyiText"/>
+    </LinearLayout>
+</android.widget.RelativeLayout>

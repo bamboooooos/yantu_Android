@@ -6,11 +6,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static int changeFlag=0;
+    static int changeFlag=0;//0表示在密码界面，1表示在快速登录
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,26 +25,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(changeFlag==0) {
+                    changeFlag=1;
                     ((TextView)findViewById(R.id.phoneLogin)).setText("密码登录");
-                    ((EditText) findViewById(R.id.loginUser)).setHint("手机号码");
-                    ((EditText) findViewById(R.id.loginPassword)).setHint("短信验证码");
-                    findViewById(R.id.getyzm).setVisibility(View.VISIBLE);
+                    ((EditText)findViewById(R.id.loginUser)).setHint("手机号码");
+                    ((EditText)findViewById(R.id.loginPassword)).setHint("短信验证码");
+                    findViewById(R.id.getyzmImage).setVisibility(View.VISIBLE);
+                    findViewById(R.id.getyzm).setVisibility(View.GONE);
                     findViewById(R.id.forget).setVisibility(View.GONE);
                     ((TextView)findViewById(R.id.loginUser)).setText("");
                     ((TextView)findViewById(R.id.loginPassword)).setText("");
-                    changeFlag=1;
-                    //TODO 更改图案
+                    ((ImageButton)findViewById(R.id.login)).setImageDrawable(getResources().getDrawable(R.drawable.loginfast));
                 }else{
+                    changeFlag=0;
                     ((TextView)findViewById(R.id.phoneLogin)).setText("快速登录");
                     ((EditText) findViewById(R.id.loginUser)).setHint("手机/邮箱/用户名");
                     ((EditText) findViewById(R.id.loginPassword)).setHint("密码");
                     findViewById(R.id.getyzm).setVisibility(View.GONE);
+                    findViewById(R.id.getyzmImage).setVisibility(View.GONE);
                     findViewById(R.id.forget).setVisibility(View.VISIBLE);
                     findViewById(R.id.tipText).setVisibility(View.GONE);
                     ((TextView)findViewById(R.id.loginUser)).setText("");
                     ((TextView)findViewById(R.id.loginPassword)).setText("");
-                    changeFlag=0;
-                    //TODO 更改图案
+                    ((ImageButton)findViewById(R.id.login)).setImageDrawable(getResources().getDrawable(R.drawable.login));
                 }
             }
         });
@@ -70,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.login).setVisibility(View.GONE);
                     findViewById(R.id.tipText).setVisibility(View.GONE);
                 }
+                if(changeFlag==1) {
+                    if (charSequence.toString().length() == 11) {
+                        findViewById(R.id.getyzmImage).setVisibility(View.GONE);
+                        findViewById(R.id.getyzm).setVisibility(View.VISIBLE);
+                    } else {
+                        findViewById(R.id.getyzmImage).setVisibility(View.VISIBLE);
+                        findViewById(R.id.getyzm).setVisibility(View.GONE);
+                    }
+                }
+
             }
 
             @Override

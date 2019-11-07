@@ -49,12 +49,24 @@
         android:id="@+id/getyzm"
         android:visibility="gone"
         android:src="@drawable/getyzm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:layout_width="112dp"
+        android:layout_height="40dp"
         android:layout_below="@id/loginUser"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="280dp"
+        android:layout_marginLeft="250dp"
         android:background="@android:color/transparent"
+        />
+    <ImageView
+        android:id="@+id/getyzmImage"
+        android:visibility="gone"
+        android:src="@drawable/getyzmimage"
+        android:scaleType="centerInside"
+        android:layout_width="112dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/loginUser"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="250dp"
         />
     <RelativeLayout
         android:id="@+id/rmbandfgt"

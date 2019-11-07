@@ -1,4 +1,39 @@
 <resources>
     <string name="app_name">Yantu_Lin</string>
     <string name="action_settings">Settings</string>
+    <string name="clockINButton">打卡</string>
+    <string name="textView4">距离2021考研倒计时</string>
+    <string name="DayText">天</string>
+    <string name="daysText">481</string>
+    <string name="textView6">院校</string>
+    <string name="textView5">近期任务安排</string>
+    <string name="textView8">研讯</string>
+    <string name="textView7">大纲</string>
+    <string name="textView9">我的收藏</string>
+    <string name="textView10">辅导书</string>
+    <string name="textView11">短期计划</string>
+    <string name="functionimage1">functionImage1</string>
+    <string name="functionimage4">functionImage4</string>
+    <string name="functionimage3">functionImage3</string>
+    <string name="functionimage6">functionImage6</string>
+    <string name="databookimage">DataBookImage</string>
+    <string name="functionimage2">functionImage2</string>
+    <string name="functionimage5">functionImage5</string>
+    <string name="outButton">退出登录</string>
+    <string name="collegeTextView">TextView</string>
+    <string name="majorTextView">TextView</string>
+    <string name="myseverTextView">我的服务</string>
+    <string name="mycollectionTextView">我的收藏</string>
+    <string name="myMessageTextView">我的消息</string>
+    <string name="myTieZiTextView">我的帖子</string>
+    <string name="myTieZiButton">TODO</string>
+    <string name="myCollectionButton">TODO</string>
+    <string name="background1">TODO</string>
+    <string name="myMessageButton">TODO</string>
+    <string name="headImage">TODO</string>
+    <string name="myBackImage">TODO</string>
+    <string name="myBackImage1">TODO</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

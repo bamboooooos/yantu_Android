@@ -1,13 +1,21 @@
 package com.example.lin9080.yantu_lin;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.sql.Date;
+import java.sql.Time;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +25,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SharedPreferences preferences=getPreferences(MODE_PRIVATE);
+        boolean islogin=preferences.getBoolean("isLogin",false);
+        boolean isrem=preferences.getBoolean("isRem",false);
+        long loginTime=preferences.getLong("time",0);
+        long closeTime=preferences.getLong("closeTime",0);
+        String userid=preferences.getString("userid","");
+        Date date=new Date(System.currentTimeMillis());
+        long timenow=date.getTime();
+        if(timenow-closeTime<30*60*1000){//半小时内直接登录
+            Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+            intent.putExtra("userid",userid);
+            startActivity(intent);
+        }else{//记住登录
+            if(isrem) {
+                if (islogin) {
+                    if (timenow - loginTime < 7 * 24 * 60 * 60 * 1000) {
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        intent.putExtra("userid",userid);
+                        startActivity(intent);
+                    } else {
+                        preferences.edit().putBoolean("islogin", false).apply();
+                        preferences.edit().putString("userid","").apply();
+                    }
+                }
+            }
+        }
         viewinit();
     }
 
@@ -54,6 +88,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO 登录
+                //登录成功
+                SharedPreferences preferences=getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putBoolean("isLogin",true);
+                Date date = new Date(System.currentTimeMillis());
+                editor.putString("userid",((EditText)findViewById(R.id.loginUser)).getText().toString());//TODO 将此改为由服务器发送的id
+                editor.putLong("time",date.getTime());
+                if(((CheckBox)findViewById(R.id.remember)).isChecked()){
+                    editor.putBoolean("isRem",true);
+                }else{
+                    editor.putBoolean("isRem",false);
+                }
+                editor.apply();
+                Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(intent);
             }
         });
         ((EditText)findViewById(R.id.loginUser)).addTextChangedListener(new TextWatcher() {
@@ -90,5 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }

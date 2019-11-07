@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/HomePage">
+
+    <fragment
+        android:id="@+id/HomePage"
+        android:name="com.example.lin9080.yantu_lin.Main_1"
+        android:label="首页"
+        tools:layout="@layout/main_1_fragment" />
+    <fragment
+        android:id="@+id/CommunityPage"
+        android:name="com.example.lin9080.yantu_lin.Main_2"
+        android:label="社区"
+        tools:layout="@layout/main_2_fragment" />
+    <fragment
+        android:id="@+id/MinePage"
+        android:name="com.example.lin9080.yantu_lin.Main_3"
+        android:label="我的"
+        tools:layout="@layout/main_3_fragment" />
+</navigation>

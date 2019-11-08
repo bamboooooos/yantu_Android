@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -29,26 +30,31 @@ public class MainActivity extends AppCompatActivity {
         boolean islogin=preferences.getBoolean("isLogin",false);
         boolean isrem=preferences.getBoolean("isRem",false);
         long loginTime=preferences.getLong("time",0);
-        long closeTime=preferences.getLong("closeTime",0);
         String userid=preferences.getString("userid","");
+        /*
+        Log.d("Linislogin", islogin+"");
+        Log.d("Linisrem", isrem+"");
+        Log.d("LinloginTime", loginTime+"");
+        Log.d("Linuserid", userid+"");
+        */
         Date date=new Date(System.currentTimeMillis());
         long timenow=date.getTime();
-        if(timenow-closeTime<30*60*1000){//半小时内直接登录
-            Intent intent=new Intent(MainActivity.this,HomeActivity.class);
-            intent.putExtra("userid",userid);
-            startActivity(intent);
-        }else{//记住登录
-            if(isrem) {
-                if (islogin) {
-                    if (timenow - loginTime < 7 * 24 * 60 * 60 * 1000) {
-                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                        intent.putExtra("userid",userid);
-                        startActivity(intent);
-                    } else {
-                        preferences.edit().putBoolean("islogin", false).apply();
-                        preferences.edit().putString("userid","").apply();
-                    }
-                }
+        Log.d("Lintimenow", timenow+"");
+        //记住登录
+        long saveTime;
+        if(isrem) {
+            saveTime=7*24*60*60*1000;
+        }else{
+            saveTime=6*60*60*1000;
+        }
+        if (islogin) {
+            if (timenow - loginTime < saveTime) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                intent.putExtra("userid",userid);
+                startActivity(intent);
+            } else {
+                preferences.edit().putBoolean("islogin", false).apply();
+                preferences.edit().putString("userid","").apply();
             }
         }
         viewinit();

@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -41,11 +42,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void goBackToDesktop() {
-        SharedPreferences preferences=getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor=preferences.edit();
-        Date date=new Date(System.currentTimeMillis());
-        editor.putLong("closeTime",date.getTime());
-        editor.apply();
         Intent home = new Intent(Intent.ACTION_MAIN);
         home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         home.addCategory(Intent.CATEGORY_HOME);

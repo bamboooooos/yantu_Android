@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Date;
 
@@ -36,6 +37,8 @@ public class HomeActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_account_circle_black_24dp);
         }
+        //滑动界面初始化
+        drawerInit();
         /*
         String userid=getIntent().getStringExtra("userid");
         //TODO 根据userid初始化界面
@@ -73,4 +76,41 @@ public class HomeActivity extends AppCompatActivity {
         }
         return true;
     }
+    public void drawerInit(){
+        NavigationView navigationView=(NavigationView)  findViewById(R.id.drawerView);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.personal:
+                        //TODO 打开个人信息页面
+                        Intent intent=new Intent(HomeActivity.this,PersonalActivity.class);
+                        //TODO 在此传入用户id
+                        intent.putExtra("Userid","");
+                        startActivity(intent);
+                        break;
+                    case R.id.post:
+                        //TODO 打开我的帖子页面
+
+                        break;
+                    case R.id.notification:
+                        //TODO 打开我的消息页面
+
+                        break;
+                    case R.id.collection:
+                        //TODO 打开我的收藏页面
+
+                        break;
+                    case R.id.setting:
+                        //TODO 打开设置页面
+
+                        break;
+                        default:
+                }
+                return true;
+            }
+        });
+    }
+
+
 }

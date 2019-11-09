@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/personalToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:id="@+id/PerHoriLine1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/personalToolbar"
+        android:layout_marginTop="50dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine1"
+        android:layout_marginTop="10dp"
+        android:text="     头像"
+        android:textSize="25sp"
+        />
+
+    <ImageButton
+        android:id="@+id/headImageChangeButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/PerHoriLine1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="7dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_account_circle_black_24dp"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText1"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine2"
+        android:layout_marginTop="10dp"
+        android:text="     昵称(id)"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/usernameChangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine2"
+        android:text="昵称(031702416)"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        />
+
+    <EditText
+        android:id="@+id/usernameChangeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine2"
+        android:hint="再此输入新的昵称"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText2"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriLine3"
+        android:layout_marginTop="70dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine4"
+        android:layout_marginTop="10dp"
+        android:text="     考研年份"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/yearChangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine4"
+        android:text="2021"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        />
+
+    <EditText
+        android:id="@+id/yearChangeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine4"
+        android:hint="再此输入考研年份"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine5"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText3"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine5"
+        android:layout_marginTop="10dp"
+        android:text="     报考专业"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/majorChangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine5"
+        android:text="计算机应用技术"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        />
+
+    <EditText
+        android:id="@+id/majorChangeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine5"
+        android:hint="再此输入报考专业"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine6"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText4"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine6"
+        android:layout_marginTop="10dp"
+        android:text="     报考院校"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/academyChangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine6"
+        android:text="福州大学"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        />
+
+    <EditText
+        android:id="@+id/academyChangeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine6"
+        android:hint="再此输入报考院校"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine7"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText5"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <TextView
+        android:id="@+id/PerHoriText6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine7"
+        android:layout_marginTop="10dp"
+        android:text="     考试科目"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/subjectChangeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine7"
+        android:text="数学一，英语一"
+        android:layout_marginTop="17dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        />
+
+    <EditText
+        android:id="@+id/subjectChangeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/PerHoriLine7"
+        android:hint="再此输入考试科目"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#00CED1"
+        android:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/PerHoriLine8"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/PerHoriText6"
+        android:layout_marginTop="10dp"
+        android:background="#008b8b"
+        />
+
+    <Button
+        android:id="@+id/changePasswordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PerHoriLine8"
+        android:layout_marginTop="30dp"
+        android:text="修改密码"
+        android:layout_centerHorizontal="true"
+        android:background="#DC143C"
+        />
+
+
+
+</RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ public class PersonalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
+        ActivityCollector.addActivity(this);
         Toolbar toolbar=(Toolbar) findViewById(R.id.personalToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -42,7 +44,9 @@ public class PersonalActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.changePasswordButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO 在此做更改密码的逻辑并传到服务器
+                Intent intent=new Intent(PersonalActivity.this,ChangePasswordActivity.class);
+                intent.putExtra("userid",userid);
+                startActivity(intent);
             }
         });
     }
@@ -119,4 +123,9 @@ public class PersonalActivity extends AppCompatActivity {
         //TODO 将信息保存到服务器
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
 }

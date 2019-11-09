@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ActivityCollector.addActivity(this);
         SharedPreferences preferences=getPreferences(MODE_PRIVATE);
         boolean islogin=preferences.getBoolean("isLogin",false);
         boolean isrem=preferences.getBoolean("isRem",false);
@@ -58,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         viewinit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
     }
 
     void viewinit(){
@@ -145,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

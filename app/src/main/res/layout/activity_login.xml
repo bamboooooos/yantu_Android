@@ -43,7 +43,7 @@
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginUser"
-        android:hint="密码" />
+        android:hint="密码"/>
 
     <ImageButton
         android:id="@+id/getyzm"

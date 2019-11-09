@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ActivityCollector.addActivity(this);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout=(DrawerLayout)findViewById(R.id.main_drawerLayout);
@@ -83,7 +84,6 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.personal:
-                        //TODO 打开个人信息页面
                         Intent intent=new Intent(HomeActivity.this,PersonalActivity.class);
                         //TODO 在此传入用户id
                         intent.putExtra("Userid","");
@@ -112,5 +112,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
 }

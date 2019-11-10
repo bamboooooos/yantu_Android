@@ -1,10 +1,12 @@
 package com.example.lin9080.yantu_lin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +29,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
     public void UIinit(){
         Toolbar toolbar=(Toolbar)findViewById(R.id.changepasswordtoolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((Button)findViewById(R.id.savePasswordButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,5 +78,16 @@ public class ChangePasswordActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ActivityCollector.removeActivity(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+        }
+        return true;
     }
 }

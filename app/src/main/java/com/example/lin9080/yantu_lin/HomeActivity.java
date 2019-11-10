@@ -102,8 +102,10 @@ public class HomeActivity extends AppCompatActivity {
 
                         break;
                     case R.id.setting:
-                        //TODO 打开设置页面
-
+                        //TODO 打开设置页面,传入用户id
+                        Intent intent1=new Intent(HomeActivity.this,SettingActivity.class);
+                        intent1.putExtra("userid","");
+                        startActivity(intent1);
                         break;
                         default:
                 }

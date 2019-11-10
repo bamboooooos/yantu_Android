@@ -287,12 +287,13 @@
 
     <Button
         android:id="@+id/changePasswordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120sp"
+        android:layout_height="40sp"
         android:layout_below="@id/PerHoriLine8"
         android:layout_marginTop="30dp"
         android:text="修改密码"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:background="#DC143C"
         />
 

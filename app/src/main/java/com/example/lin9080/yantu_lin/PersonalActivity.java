@@ -72,7 +72,7 @@ public class PersonalActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
-                default:
+            default:
         }
         return true;
     }

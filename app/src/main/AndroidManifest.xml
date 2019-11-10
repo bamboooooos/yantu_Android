@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".SettingActivity"
+            android:label="设置"
+            ></activity>
+        <activity android:name=".ChangePasswordActivity"
+            android:label="修改密码"/>
         <activity
             android:name=".PersonalActivity"
-            android:label="个人资料"></activity>
+            android:label="个人资料" />
         <activity
             android:name=".HomeActivity"
             android:label="研途" />

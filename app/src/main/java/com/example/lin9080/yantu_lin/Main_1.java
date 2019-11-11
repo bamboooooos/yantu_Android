@@ -51,6 +51,7 @@ public class Main_1 extends Fragment {
 
 
     void UIinit(/*String userid*/){
+        //TODO 倒计时
         ((ImageButton)view.findViewById(R.id.addPlanButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

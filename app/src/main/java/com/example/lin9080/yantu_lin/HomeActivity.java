@@ -84,28 +84,31 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.personal:
-                        Intent intent=new Intent(HomeActivity.this,PersonalActivity.class);
+                        Intent intent1=new Intent(HomeActivity.this,PersonalActivity.class);
                         //TODO 在此传入用户id
-                        intent.putExtra("Userid","");
-                        startActivity(intent);
+                        intent1.putExtra("Userid","");
+                        startActivity(intent1);
                         break;
                     case R.id.post:
-                        //TODO 打开我的帖子页面
+                        Intent intent2=new Intent(HomeActivity.this,MyTieziActivity.class);
+                        //TODO 在此传入用户id
+                        intent2.putExtra("Userid","");
+                        startActivity(intent2);
 
                         break;
-                    case R.id.notification:
-                        //TODO 打开我的消息页面
 
-                        break;
                     case R.id.collection:
-                        //TODO 打开我的收藏页面
+                        Intent intent3=new Intent(HomeActivity.this,MyCollectActivity.class);
+                        //TODO 在此传入用户id
+                        intent3.putExtra("Userid","");
+                        startActivity(intent3);
 
                         break;
                     case R.id.setting:
                         //TODO 打开设置页面,传入用户id
-                        Intent intent1=new Intent(HomeActivity.this,SettingActivity.class);
-                        intent1.putExtra("userid","");
-                        startActivity(intent1);
+                        Intent intent4=new Intent(HomeActivity.this,SettingActivity.class);
+                        intent4.putExtra("userid","");
+                        startActivity(intent4);
                         break;
                         default:
                 }

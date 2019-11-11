@@ -12,34 +12,25 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#06a5fa"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/Tablayout"
-            app:tabBackground="@android:color/white"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabTextColor="@android:color/black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="#234252"
+            app:tabBackground="@android:color/holo_blue_dark"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabTextColor="@android:color/black" />
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/Viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </android.support.v4.view.ViewPager>
+
+        </androidx.viewpager.widget.ViewPager>
     </LinearLayout>
 
 
-    <include
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        layout="@layout/fragment_main_3_fun_1_"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
 
 </RelativeLayout>

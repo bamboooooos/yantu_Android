@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main_1">
+    tools:context=".Main_1"
+    android:background="@color/recylerBackgroud">
 
 
 
@@ -65,22 +66,18 @@
         android:layout_below="@id/countdownlayout"/>
 
 
-    <LinearLayout
-        android:id="@+id/recentRecyclerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/recentText"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mission"
+            android:id="@+id/PlanRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_below="@id/recentText"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"/>
+
 
     <ImageButton
+        android:id="@+id/addPlanButton"
         android:layout_width="40dp"
         android:layout_height="35dp"
         android:background="@android:color/transparent"
@@ -90,6 +87,8 @@
         android:layout_marginRight="20dp"
         android:layout_alignBottom="@id/recentText"
         />
+
+
 
 
 </RelativeLayout>

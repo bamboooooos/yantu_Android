@@ -27,13 +27,13 @@
 
     <EditText
         android:id="@+id/loginUser"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:layout_centerHorizontal="true"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginText"
         android:layout_marginTop="70dp"
-        android:hint="手机/邮箱/用户名" />
+        android:hint="手机号码" />
 
     <EditText
         android:id="@+id/loginPassword"

@@ -69,10 +69,10 @@ public class main_3_fun_3_Fragment extends Fragment {
 
     ArrayList<Book> booksinit(){
         ArrayList<Book> result=new ArrayList<>();
-        result.add(new Book("1","辅导书1","https://cn.bing.com/search?q=五三"));
-        result.add(new Book("1","辅导书1","https://cn.bing.com"));
-        result.add(new Book("1","辅导书1","https://detail.tmall.com/item.htm?spm=a230r.1.14.11.320c7619UzUctO&id=543118847963&cm_id=140105335569ed55e27b&abbucket=13"));
-        result.add(new Book("1","辅导书1","https://www.baidu.com"));
+        result.add(new Book("1","bilibili","https://www.bilibili.com/video/av64383875"));
+        result.add(new Book("2","百度","https://www.baidu.com"));
+        result.add(new Book("3","百度网盘","https://pan.baidu.com/s/1-pCjpENgAyacY7rBg5d3mg"));
+        result.add(new Book("4","淘宝","https://detail.tmall.com/item.htm?spm=a230r.1.14.1.39c864a33RjD2i&id=533895448017&cm_id=140105335569ed55e27b&abbucket=13"));
         return result;
     }
 }

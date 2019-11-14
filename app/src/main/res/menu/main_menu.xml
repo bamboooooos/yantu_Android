@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/HomePage"
-        android:icon="@drawable/mian1"
-        android:title="首页" />
+        android:icon="@drawable/nav_1"
+        android:title="任务" />
     <item
         android:id="@+id/CommunityPage"
-        android:icon="@drawable/main2"
+        android:icon="@drawable/nav_2"
         android:title="社区" />
     <item
         android:id="@+id/MinePage"
-        android:icon="@drawable/main3"
-        android:title="我的" />
+        android:icon="@drawable/nav_3"
+        android:title="更多" />
 </menu>

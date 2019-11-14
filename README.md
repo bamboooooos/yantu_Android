@@ -56,3 +56,6 @@
 换了浏览器内核，腾讯tbs实在不会用，难顶
 
 ---
+
+2019/11/14 'add information and change ui'
+新增资讯页面，更改部分ui

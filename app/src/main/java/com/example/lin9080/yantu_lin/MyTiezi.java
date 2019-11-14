@@ -6,6 +6,7 @@ public class MyTiezi {
     private String title;
     private String content;
     private int id;
+    private String user_id;
 
     public String getUser_id() {
         return user_id;
@@ -15,7 +16,7 @@ public class MyTiezi {
         this.user_id = user_id;
     }
 
-    private String user_id;
+
 
     public int getId() {
         return id;

@@ -14,13 +14,27 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     static int changeFlag=0;//0表示在密码界面，1表示在快速登录
+    String address="http://192.168.31.234:8080";
+    String url=address+"/login/password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +46,6 @@ public class MainActivity extends AppCompatActivity {
         boolean isrem=preferences.getBoolean("isRem",false);
         long loginTime=preferences.getLong("time",0);
         String userid=preferences.getString("userid","");
-        /*
-        Log.d("Linislogin", islogin+"");
-        Log.d("Linisrem", isrem+"");
-        Log.d("LinloginTime", loginTime+"");
-        Log.d("Linuserid", userid+"");
-        */
         Date date=new Date(System.currentTimeMillis());
         long timenow=date.getTime();
         Log.d("Lintimenow", timenow+"");
@@ -100,22 +108,58 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO 登录
-                //登录成功
-                SharedPreferences preferences=getPreferences(MODE_PRIVATE);
-                SharedPreferences.Editor editor=preferences.edit();
-                editor.putBoolean("isLogin",true);
-                Date date = new Date(System.currentTimeMillis());
-                editor.putString("userid",((EditText)findViewById(R.id.loginUser)).getText().toString());//TODO 将此改为由服务器发送的id
-                editor.putLong("time",date.getTime());
-                if(((CheckBox)findViewById(R.id.remember)).isChecked()){
-                    editor.putBoolean("isRem",true);
-                }else{
-                    editor.putBoolean("isRem",false);
-                }
-                editor.apply();
-                Intent intent=new Intent(MainActivity.this,HomeActivity.class);
-                startActivity(intent);
+                OkHttpClient mOkHttpClient=new OkHttpClient();
+                RequestBody formBody = new FormBody.Builder()
+                        .add("phone", ((EditText)findViewById(R.id.loginUser)).getText().toString())
+                        .add("password", ((EditText)findViewById(R.id.loginPassword)).getText().toString())
+                        .build();
+                Request request = new Request.Builder()
+                        .url(url)
+                        .post(formBody)
+                        .build();
+                Call call = mOkHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                    }
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String str = response.body().string();
+                        int add = str.indexOf("message\":\"");
+                        Log.d("linresult", str);
+                        if ((str.charAt(12)) == '1'){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //登录成功
+                                SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putBoolean("isLogin", true);
+                                Date date = new Date(System.currentTimeMillis());
+                                editor.putString("userid", ((EditText) findViewById(R.id.loginUser)).getText().toString());//TODO 将此改为由服务器发送的id
+                                editor.putLong("time", date.getTime());
+                                if (((CheckBox) findViewById(R.id.remember)).isChecked()) {
+                                    editor.putBoolean("isRem", true);
+                                } else {
+                                    editor.putBoolean("isRem", false);
+                                }
+                                editor.apply();
+                                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }else{
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(),"登录失败!账号不存在或密码错误",Toast.LENGTH_LONG).show();
+                                    //((EditText) findViewById(R.id.loginUser)).setText("");
+                                    ((EditText) findViewById(R.id.loginPassword)).setText("");
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
         ((EditText)findViewById(R.id.loginUser)).addTextChangedListener(new TextWatcher() {

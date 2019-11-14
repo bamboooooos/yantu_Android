@@ -7,13 +7,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.example.lin9080.yantu_lin.GsonClass.GsonZixun;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -27,11 +40,14 @@ public class main_3_fun_2_Fragment extends Fragment {
     }
 
 
+
     ArrayList<Information> mlist=new ArrayList<>();
     View view;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
     final InforAdapter adapter = new InforAdapter(mlist);
+    String result="";
+    String url="http://192.168.31.234:8080/data/zx";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,10 +65,30 @@ public class main_3_fun_2_Fragment extends Fragment {
 
     void DTinit(){
         mlist.clear();
-        //TODO 获取资料并添加到适配器
-        //例子
-        mlist.addAll(initInfor());
-        adapter.notifyDataSetChanged();
+                    result="";
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(url).method("GET",null).build();
+                    Call call = client.newCall(request);
+                        call.enqueue(new Callback() {
+                        //请求失败执行的方法
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                        }
+                        //请求成功执行的方法
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            final String data = response.body().string();
+                            Log.d("response",data);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    result+=data;
+                                    mlist.addAll(parseJSONWithGSON(result));
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    });
     }
 
     @Override
@@ -61,18 +97,17 @@ public class main_3_fun_2_Fragment extends Fragment {
         DTinit();
     }
 
-    ArrayList<Information> initInfor(){
+
+    private ArrayList<Information> parseJSONWithGSON(String s){
+        Gson gson = new Gson();
+        ArrayList<GsonZixun> zixunlist = gson.fromJson(s,new TypeToken<ArrayList<GsonZixun>>(){}.getType());
         ArrayList<Information> result=new ArrayList<>();
-        Date date=new Date();
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
-        result.add(new Information("1","标题",date.getTime()+"","详情\n详情\n详情\n详情\n详情\n详情\n"));
+        for(int i=0;i<zixunlist.size();i++){
+            GsonZixun g=zixunlist.get(i);
+            result.add(new Information(g.getId()+"",g.getZb(),g.getZs(),g.getZn()));
+        }
         return result;
     }
+
 
 }

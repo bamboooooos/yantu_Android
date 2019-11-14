@@ -59,3 +59,9 @@
 
 2019/11/14 'add information and change ui'
 新增资讯页面，更改部分ui
+
+2019/11/14 'merge 3and fix bug'
+合并了院校社区功能，修改了一个网络方面的bug
+注意:1.okhttp需要两个库:okhttp3,okio
+	2.结果的处理要用异步
+	3.ui的更新要在runOnUiThread方法内

@@ -28,7 +28,7 @@ public class SettingActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.logout)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataCleanManager.cleanApplicationData(getApplication());
+                DataCleanManager.cleanSharedPreference(getApplication());
                 restartApp();
             }
         });

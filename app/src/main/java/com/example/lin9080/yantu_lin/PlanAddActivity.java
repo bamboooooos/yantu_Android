@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 
 public class PlanAddActivity extends AppCompatActivity {
-    String userid = "031702418";
+    String userid = HomeActivity.userid;
     private SQLiteDatabase db;
     String id = "";
     DateTimePicker dateTimePicker;
@@ -91,9 +91,9 @@ public class PlanAddActivity extends AppCompatActivity {
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
                         values.put("calendar", textView.getText().toString());
+                        values.put("userid", userid);
                         values.put("plans", editText.getText().toString());
-                        db.insert("Plans", null, values);
-                        Log.d("kxf", textView.getText().toString());
+                        long l=db.insert("Plans", null, values);
                         values.clear();
                         finish();
                     }

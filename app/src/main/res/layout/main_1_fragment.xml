@@ -18,7 +18,7 @@
         android:id="@+id/countdownText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="距离2021考研倒计时"
+        android:text="距离2020考研倒计时"
         android:layout_marginTop="20dp"
         android:textSize="15sp"
         android:layout_marginLeft="30dp"/>

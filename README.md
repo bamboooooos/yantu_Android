@@ -65,3 +65,6 @@
 注意:1.okhttp需要两个库:okhttp3,okio
 	2.结果的处理要用异步
 	3.ui的更新要在runOnUiThread方法内
+	
+2019/11/15 'linktoserver'
+完善逻辑部分并连接到服务器（部分）

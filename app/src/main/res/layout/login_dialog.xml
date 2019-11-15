@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/nameEdit"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="输入你的名字"/>
+
+    <Spinner
+        android:id="@+id/major1Select"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/nameEdit"
+        />
+
+    <Spinner
+        android:id="@+id/major2Select"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/major1Select"
+        />
+    <Spinner
+        android:id="@+id/schoolSelect"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/major2Select"
+        />
+        <Button
+            android:id="@+id/majorSava"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:layout_below="@id/schoolSelect"
+            android:layout_alignRight="@id/schoolSelect"/>
+</RelativeLayout>
+
+</RelativeLayout>

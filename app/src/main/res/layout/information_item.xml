@@ -20,6 +20,7 @@
             android:id="@+id/inforTitle"
             android:text="标题"
             android:textSize="30dp"
+            android:maxLines="1"
             android:layout_centerHorizontal="true"/>
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
             android:id="@+id/inforTime"
             android:text="2019/11/14/16/01"
             android:textSize="20dp"
-            android:layout_below="@+id/inforIntro"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>

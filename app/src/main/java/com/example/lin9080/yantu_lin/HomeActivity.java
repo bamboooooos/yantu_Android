@@ -11,24 +11,46 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.IOException;
 import java.util.Date;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class HomeActivity extends AppCompatActivity {
 
+    Intent intent0;
+    static String userid="";
+    String address="http://192.168.31.234:8080";
+    String url=address+"/register";
     DrawerLayout drawerLayout;
+    Login login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        intent0=getIntent();
+        userid=intent0.getStringExtra("userid");
+
         ActivityCollector.addActivity(this);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -40,17 +62,67 @@ public class HomeActivity extends AppCompatActivity {
         }
         //滑动界面初始化
         drawerInit();
-        /*
-        String userid=getIntent().getStringExtra("userid");
-        //TODO 根据userid初始化界面
-        if(!userid.equals("")){
+        Boolean status=intent0.getBooleanExtra("status",false);
+        if(status){//如果是注册
+            final LoginDialog dialog=new LoginDialog(this);
+            dialog.show();
+            dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+            dialog.findViewById(R.id.majorSava).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String editedName = ((EditText) dialog.findViewById(R.id.nameEdit)).getText().toString();
+                    if (editedName.length() <= 0) {
+                        Toast.makeText(getApplicationContext(), "用户名为空！", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.d("linresult", "click");
+                        login = dialog.getLoginData();
+                        login.setPhone(userid);
+                        login.setNamel(editedName);
+                        login.setPassword(intent0.getStringExtra("password"));
+                        OkHttpClient mOkHttpClient = new OkHttpClient();
+                        RequestBody formBody = new FormBody.Builder()
+                                .add("phone", login.getPhone())
+                                .add("password", login.getPassword())
+                                .add("name", login.getNamel())
+                                .add("major", login.getMajor() + "")
+                                .add("years", login.getYear() + "")
+                                .build();
+                        Request request = new Request.Builder()
+                                .url(url)
+                                .post(formBody)
+                                .build();
+                        Call call = mOkHttpClient.newCall(request);
+                        call.enqueue(new Callback() {
+                            //请求失败执行的方法
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                            }
 
-        }*/
+                            //请求成功执行的方法
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                final String data = response.body().string();
+                                Log.d("response", data);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                    }
+                                });
+                            }
+                        });
+                        dialog.dismiss();
+                    }
+                }
+            });
+        }
+        //TODO 根据id初始化
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         NavController navController = Navigation.findNavController(this,R.id.fragment);
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(bottomNavigationView.getMenu()).build();
         //NavigationUI.setupActionBarWithNavController(this,navController,configuration);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
+
     }
 
     //返回键到桌面，并不退出

@@ -38,7 +38,7 @@ import okio.BufferedSource;
 public class MainActivity extends AppCompatActivity {
 
     static int changeFlag=0;//0表示在密码界面，1表示在快速登录
-    String address="http://192.168.31.234:8080";
+    String address="http://106.54.95.234:8080";
     String url=address+"/login/password";
     String urldeg=address+"/notsame";
 

@@ -1,5 +1,6 @@
 package com.example.lin9080.yantu_lin;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -45,8 +47,15 @@ public class Main_2 extends Fragment {
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        get1("http://192.168.31.234:8080/tie");
+        get1("http://106.54.95.234:8080/tie");
         adapter.notifyDataSetChanged();
+        ((Button)view.findViewById(R.id.fabu)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),PublishActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -91,5 +100,11 @@ public class Main_2 extends Fragment {
         for(int i=list.size()-1;i>=0;i--){
             tieziList.add(list.get(i));
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        get1("http://106.54.95.234:8080/tie");
     }
 }

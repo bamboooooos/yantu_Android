@@ -34,8 +34,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ReplyActivity extends AppCompatActivity {
-    String url1 = "http://192.168.31.234:8080/tie";
-    String url2 = "http://192.168.31.234:8080/tie/findreplys";
+    String url1 = "http://106.54.95.234:8080/tie";
+    String url2 = "http://106.54.95.234:8080/tie/findreplys";
     private String id;
     private MyTiezi tiezi;
     private List<Reply> replyList= new ArrayList<>();

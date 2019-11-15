@@ -47,7 +47,7 @@ public class main_3_fun_2_Fragment extends Fragment {
     LinearLayoutManager layoutManager;
     final InforAdapter adapter = new InforAdapter(mlist);
     String result="";
-    String url="http://192.168.31.234:8080/data/zx";
+    String url="http://106.54.95.234:8080/data/zx";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

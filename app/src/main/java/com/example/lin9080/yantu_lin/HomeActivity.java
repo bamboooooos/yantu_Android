@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
 
     Intent intent0;
     static String userid="";
-    String address="http://192.168.31.234:8080";
+    String address="http://106.54.95.234:8080";
     String url=address+"/register";
     DrawerLayout drawerLayout;
     Login login;

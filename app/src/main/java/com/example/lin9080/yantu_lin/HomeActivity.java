@@ -52,9 +52,9 @@ public class HomeActivity extends AppCompatActivity {
         userid=intent0.getStringExtra("userid");
 
         ActivityCollector.addActivity(this);
+        drawerLayout=(DrawerLayout)findViewById(R.id.main_drawerLayout);
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawerLayout=(DrawerLayout)findViewById(R.id.main_drawerLayout);
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null){
             actionBar.setDisplayHomeAsUpEnabled(true);

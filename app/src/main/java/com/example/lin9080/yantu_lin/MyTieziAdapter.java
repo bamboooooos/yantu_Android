@@ -45,8 +45,8 @@ public class MyTieziAdapter extends RecyclerView.Adapter<MyTieziAdapter.ViewHold
             public void onClick(View v) {
                 int pos = holder.getAdapterPosition();
                 MyTiezi myTiezi = mList.get(pos);
-                Intent intent = new Intent(view.getContext(),MainActivity.class);
-                intent.putExtra("id",String.valueOf(myTiezi.getId()));
+                Intent intent = new Intent(view.getContext(),ReplyActivity.class);
+                intent.putExtra("id",myTiezi.getId()+"");
                 view.getContext().startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class MyTieziAdapter extends RecyclerView.Adapter<MyTieziAdapter.ViewHold
         viewHolder.myTiezi_titleText.setText(myTiezi.getTitle());
         viewHolder.myTiezi_contentText.setText(myTiezi.getContent());
         viewHolder.myTiezi_zanText.setText("赞："+myTiezi.getZan());
-        viewHolder.myTiezi_plText.setText("评论："+myTiezi.getPl());
+        viewHolder.myTiezi_plText.setText("来自："+myTiezi.getUser_id());
     }
 
     @Override

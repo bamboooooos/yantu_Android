@@ -1,12 +1,24 @@
 package com.example.lin9080.yantu_lin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyTiezi {
-    private int zan;
-    private int pl;
-    private String title;
-    private String content;
-    private int id;
-    private String user_id;
+    private int zan;//赞数
+    private int pl;//评论数
+    private String title;//贴子名
+    private String content;//贴子内容
+    private int id;//贴子id
+    private String user_id;//用户id
+    private List<Reply> replysList = new ArrayList<>();
+
+    public List<Reply> getReplysList() {
+        return replysList;
+    }
+
+    public void setReplysList(List<Reply> replysList) {
+        this.replysList = replysList;
+    }
 
     public String getUser_id() {
         return user_id;
@@ -57,4 +69,5 @@ public class MyTiezi {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

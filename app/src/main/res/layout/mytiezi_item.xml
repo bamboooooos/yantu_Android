@@ -29,7 +29,6 @@
             android:layout_weight="1"/>
         <TextView
             android:gravity="right"
-            android:text="评论："
             android:id="@+id/myTiezi_pl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
